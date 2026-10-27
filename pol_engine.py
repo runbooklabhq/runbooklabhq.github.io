@@ -184,7 +184,7 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Runbook Lab - Automation & AI Suite</title>
+<title>Runbook Lab - Microsoft 365 hardening kits and Claude skills</title>
 <style>
 body { font-family: system-ui, sans-serif; background: #0f172a; color: #f8fafc; max-width: 920px; margin: 0 auto; padding: 40px 20px; line-height: 1.6; }
 .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 28px; margin: 24px 0; }
@@ -192,15 +192,19 @@ body { font-family: system-ui, sans-serif; background: #0f172a; color: #f8fafc; 
 .btn { display: inline-block; background: #10b981; color: #052e16; font-weight: 700; padding: 14px 24px; border-radius: 8px; text-decoration: none; margin-top: 10px; }
 .btn-etsy { background: #f97316; color: #fff; }
 h1 { color: #fff; } h2 { color: #38bdf8; margin-top: 0; }
+.links a { color:#34d399; }
 .prod-image { width: 100%; max-height: 400px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; border: 1px solid #334155; }
 </style>
 </head>
 <body>
-<h1>Production-Ready Python FastAPI + n8n Blueprints</h1>
+<h1>Runbook Lab</h1>
+<p>Practical Microsoft 365 security for admins and MSPs: hardening checklists you can import into Jira, read-only PowerShell checks, and notes on Microsoft deadlines. Plus tested Claude Code skills.</p>
+<p class="links">Find us: <a rel="me" href="https://runbooklab.gumroad.com/">Gumroad (kits)</a> · <a rel="me" href="https://github.com/runbooklabhq">GitHub</a> · <a rel="me" href="https://www.agensi.io/creators/runbooklab">Agensi (skills)</a> · <a rel="me" href="https://www.linkedin.com/company/runbooklab/">LinkedIn</a> · <a rel="me" href="https://bsky.app/profile/runbooklab.bsky.social">Bluesky</a> · <a rel="me" href="https://mastodon.social/@runbooklab">Mastodon</a> · <a rel="me" href="https://dev.to/runbooklab">dev.to</a></p>
+<div class="card"><h2>Guides</h2><ul>__GUIDE_LINKS__</ul></div>
+<h1 style="margin-top:50px;">Kits, skills and blueprints</h1>
 __PRODUCT_CARDS__
-<h1 style="margin-top:50px;">Etsy Exclusives: AI & Claude Skills</h1>
-__ETSY_CARDS__
-<div class="card"><h2>Technical SEO Guides</h2><ul>__GUIDE_LINKS__</ul></div>
+
+<p style="color:#94a3b8;font-size:.9rem;margin-top:40px">© Runbook Lab · Not affiliated with or endorsed by Microsoft or Anthropic.</p>
 </body>
 </html>"""
 
