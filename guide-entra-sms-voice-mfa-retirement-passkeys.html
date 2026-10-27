@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Entra SMS and Voice MFA Retirement (1 Feb 2027): Passkey Checklist | Runbook Lab</title>
+<meta name="description" content="Microsoft retires its SMS and voice MFA on 1 February 2027 (Global Admins and external users: 1 July 2027). Find phone-only users with a read-only Graph check, enable passkeys, run a registration campaign and track the count to zero.">
+<link rel="canonical" href="https://runbooklabhq.github.io/guide-entra-sms-voice-mfa-retirement-passkeys.html">
+<meta property="og:title" content="Entra SMS and voice MFA retires 1 February 2027: move users to passkeys">
+<meta property="og:description" content="Read-only check for phone-only users and a six-step passkey rollout.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;800&family=Inter:wght@400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "When does Microsoft retire SMS and voice MFA in Entra ID?", "acceptedAnswer": {"@type": "Answer", "text": "Microsoft-provided SMS and voice authentication retires on 1 February 2027 for all users except Global Administrators and external users (internal guests are included), and on 1 July 2027 for Global Administrators and external users. The timeline applies to public cloud tenants (Microsoft 365 message MC1519855 and Microsoft Learn)."}}, {"@type": "Question", "name": "What happens to users whose only MFA method is SMS or voice?", "acceptedAnswer": {"@type": "Answer", "text": "After the retirement date they get a blocking prompt to register a passkey during sign-in and can't skip it. Microsoft says there is no opt-out for enforcement. Users moved to a telephony provider from Microsoft Security Store before their date don't get the prompt."}}, {"@type": "Question", "name": "How do I find users who only have SMS or voice registered?", "acceptedAnswer": {"@type": "Answer", "text": "Use the user registration details report (Entra ID > Authentication methods > Activity, or Microsoft Graph reports/authenticationMethods/userRegistrationDetails, cmdlet Get-MgReportAuthenticationMethodUserRegistrationDetail) and keep users whose registered methods are only phone methods, plus email or security questions. The report needs Entra ID P1 or P2 and a role such as Reports Reader."}}, {"@type": "Question", "name": "Does the change affect self-service password reset?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Microsoft says the retirement applies across Microsoft Entra, including SSPR, so users who reset passwords only by SMS or call need another method."}}, {"@type": "Question", "name": "Do I need to buy a telephony provider?", "acceptedAnswer": {"@type": "Answer", "text": "Only if you have a documented regulated or operational need for SMS or voice. Microsoft recommends passkeys for everyone else, and moving SMS and voice users to passkeys has no additional cost. Provider pricing varies by provider and region."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Entra SMS and voice MFA retirement (1 Feb 2027): move users to passkeys", "datePublished": "2026-10-27", "dateModified": "2026-10-27", "author": {"@type": "Organization", "name": "Runbook Lab"}, "publisher": {"@type": "Organization", "name": "Runbook Lab"}, "mainEntityOfPage": "https://runbooklabhq.github.io/guide-entra-sms-voice-mfa-retirement-passkeys.html"}</script>
+<style>
+:root{--bg:#050d18;--card:#0b1726;--line:#16283d;--ink:#e6f6ff;--muted:#8aa4b8;--a1:#a78bfa;--a2:#6366f1;--v:#8b5cf6}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:40px 16px 64px}
+h1,h2{font-family:"Exo 2",sans-serif;line-height:1.15;margin:0 0 12px}h1{font-size:clamp(30px,6vw,46px)}h2{font-size:26px;margin-top:48px}
+.grad{background:linear-gradient(90deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent}
+p.lead{color:var(--muted);font-size:18px;max-width:680px}
+.btn{display:inline-block;padding:12px 20px;border-radius:10px;font-weight:600;text-decoration:none;margin:6px 8px 6px 0}
+.btn.p{background:linear-gradient(90deg,var(--a1),var(--a2));color:#04121f}.btn.s{border:1px solid var(--line);color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.card h3{margin:0 0 6px;font-size:18px}.price{font-family:"Exo 2";font-size:28px;font-weight:800}.muted{color:var(--muted);font-size:14px}
+.best{border-color:var(--v);box-shadow:0 0 0 1px var(--v)}.tag{display:inline-block;font-size:12px;background:var(--v);color:#fff;border-radius:6px;padding:2px 8px;margin-bottom:8px}
+pre{background:#020812;border:1px solid var(--line);border-radius:10px;padding:14px;overflow-x:auto;font:14px/1.5 "JetBrains Mono",monospace;color:var(--a1)}
+table{width:100%;border-collapse:collapse;font-size:15px}td,th{text-align:left;padding:8px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-weight:600}
+code{font-family:"JetBrains Mono",monospace;font-size:14px;color:var(--a1)}footer{margin-top:56px;color:var(--muted);font-size:13px}
+a{color:var(--a1)}
+p,h3,td,li{overflow-wrap:anywhere}
+</style>
+</head><body><div class="wrap">
+<p class="muted">Runbook Lab · Security · Updated 27 October 2026 · dates checked against MC1519855 and Microsoft Learn</p>
+<h1>Entra SMS and voice MFA retires <span class="grad">1 February 2027</span>: move users to passkeys</h1>
+<p class="lead">Microsoft retires its own SMS and voice MFA for all users except Global Administrators and external users on 1 February 2027, and for those two groups on 1 July 2027. Users whose only method is SMS or voice then get a blocking passkey prompt at sign-in, with no opt-out for enforcement. Six steps to get the number of affected users to zero first.</p>
+<a class="btn p" href="https://runbooklab.gumroad.com/l/sms-mfa-exit-top5?utm_source=storefront&utm_campaign=sms-lp">Get the free Top 5 kit</a><a class="btn s" href="https://runbooklabhq.github.io/guide-microsoft-365-hardening-checklist-jira.html">Microsoft 365 hardening checklist</a>
+<h2>The dates</h2><table><tr><th>Date</th><th>What happens</th></tr>
+<tr><td>30 Oct 2026</td><td>Organisations with a documented need can set up a telephony provider from Microsoft Security Store.</td></tr>
+<tr><td>1 Feb 2027</td><td>Microsoft-provided SMS and voice retire for all users except Global Administrators and external users. Internal guests are included.</td></tr>
+<tr><td>1 Jul 2027</td><td>Retirement for Global Administrators and external users.</td></tr></table>
+<p class="muted">Source: Microsoft 365 message MC1519855 (21 Oct 2026) and Microsoft Learn, "Passkeys by default and retirement of Microsoft-provided SMS and voice authentication". Public cloud only. Dates can change: re-check the message before you plan around them.</p>
+<h2>The six steps</h2>
+<div class="card" style="margin-top:16px"><h3>1. List the phone-only users</h3><p>Read-only. Needs Entra ID P1/P2, <code>AuditLog.Read.All</code> and a reader role. Put the result in a group such as <code>SMS-Voice-Exit</code>.</p><pre>$r = @(Get-MgReportAuthenticationMethodUserRegistrationDetail -All)
+$ph = @(&#x27;mobilePhone&#x27;,&#x27;alternateMobilePhone&#x27;,&#x27;officePhone&#x27;)
+$weak = $ph + @(&#x27;email&#x27;,&#x27;securityQuestion&#x27;)
+$only = $r | Where-Object {
+  $m = @($_.MethodsRegistered)
+  ($m | Where-Object { $ph -contains $_ }) -and
+  -not ($m | Where-Object { $weak -notcontains $_ }) }
+&quot;Phone-only users: $(@($only).Count)&quot;
+$only | Select-Object UserPrincipalName, UserType, IsAdmin |
+  Export-Csv -NoTypeInformation .\phone-only-users.csv</pre></div>
+<div class="card" style="margin-top:16px"><h3>2. See where SMS and voice are enabled</h3><p>In the Entra admin center: Entra ID &gt; Authentication methods &gt; Policies &gt; SMS and Voice call. Microsoft's own scanner, <code>microsoft/entra-sms-voice-usage-analyzer</code> on GitHub, reports the policy scope (not users).</p></div>
+<div class="card" style="margin-top:16px"><h3>3. Enable Passkey (FIDO2) for that group</h3><p>Authentication methods &gt; Policies &gt; Passkey (FIDO2). Users can use a passkey in Microsoft Authenticator, a synced passkey or a FIDO2 security key. Pilot with IT first.</p></div>
+<div class="card" style="margin-top:16px"><h3>4. Run a registration campaign</h3><p>Authentication methods &gt; Registration campaign, target the group and passkeys. Snoozes are unlimited by default, so set the date when you stop allowing them.</p></div>
+<div class="card" style="margin-top:16px"><h3>5. Tell users in three waves</h3><p>Awareness now, action with per-device steps, then reminders to whoever is still on the list. Microsoft publishes templates at <code>aka.ms/mfatemplates</code>.</p></div>
+<div class="card" style="margin-top:16px"><h3>6. Re-run step 1 every week</h3><p>The only number that matters is how many users would be blocked on the date. Escalate the remaining names two weeks before 1 February 2027.</p></div>
+<h2>Don't forget</h2><div class="grid">
+<div class="card"><h3>Admins and break-glass</h3><p class="muted">Global Admins have until 1 July 2027, but move them first. Break-glass accounts should use FIDO2 keys, never SMS.</p></div>
+<div class="card"><h3>Password reset (SSPR)</h3><p class="muted">The retirement applies to SSPR too. Phone-only users need another reset method.</p></div>
+<div class="card"><h3>Stuck users</h3><p class="muted">Use a short-lived, one-time Temporary Access Pass after identity verification, not a password or SMS.</p></div></div>
+<h2>Get the kit</h2><div class="grid"><div class="card best"><span class="tag">Free</span><h3>Top 5</h3><p class="muted">Steps 1–5 as a guide, a Jira import, a tracker CSV and read-only PowerShell checks that export phone-only-users.csv.</p><a class="btn p" href="https://runbooklab.gumroad.com/l/sms-mfa-exit-top5?utm_source=storefront&utm_campaign=sms-lp">Download free</a></div>
+<div class="card"><h3>Complete (12 controls)</h3><p class="muted">Adds admins and break-glass, internal guests, SSPR, the telephony-provider decision, the opt-out check, helpdesk onboarding with Temporary Access Pass and weekly tracking. Coming soon on Gumroad.</p></div></div>
+<h2>FAQ</h2>
+<h3>When does Microsoft retire SMS and voice MFA in Entra ID?</h3><p>Microsoft-provided SMS and voice authentication retires on 1 February 2027 for all users except Global Administrators and external users (internal guests are included), and on 1 July 2027 for Global Administrators and external users. The timeline applies to public cloud tenants (Microsoft 365 message MC1519855 and Microsoft Learn).</p>
+<h3>What happens to users whose only MFA method is SMS or voice?</h3><p>After the retirement date they get a blocking prompt to register a passkey during sign-in and can&#x27;t skip it. Microsoft says there is no opt-out for enforcement. Users moved to a telephony provider from Microsoft Security Store before their date don&#x27;t get the prompt.</p>
+<h3>How do I find users who only have SMS or voice registered?</h3><p>Use the user registration details report (Entra ID &gt; Authentication methods &gt; Activity, or Microsoft Graph reports/authenticationMethods/userRegistrationDetails, cmdlet Get-MgReportAuthenticationMethodUserRegistrationDetail) and keep users whose registered methods are only phone methods, plus email or security questions. The report needs Entra ID P1 or P2 and a role such as Reports Reader.</p>
+<h3>Does the change affect self-service password reset?</h3><p>Yes. Microsoft says the retirement applies across Microsoft Entra, including SSPR, so users who reset passwords only by SMS or call need another method.</p>
+<h3>Do I need to buy a telephony provider?</h3><p>Only if you have a documented regulated or operational need for SMS or voice. Microsoft recommends passkeys for everyone else, and moving SMS and voice users to passkeys has no additional cost. Provider pricing varies by provider and region.</p>
+<footer>© Runbook Lab · Not affiliated with or endorsed by Microsoft. Test every change on a pilot group first. · <a href="https://runbooklabhq.github.io/">Storefront</a> · <a href="https://runbooklabhq.github.io/guide-microsoft-365-hardening-checklist-jira.html">Microsoft 365 hardening checklist</a> · <a href="https://runbooklabhq.github.io/guide-exchange-online-smtp-auth-basic-auth-checklist.html">SMTP AUTH checklist</a><br>Find us: <a rel="me" href="https://runbooklab.gumroad.com/">Gumroad</a> · <a rel="me" href="https://github.com/runbooklabhq">GitHub</a> · <a rel="me" href="https://www.agensi.io/creators/runbooklab">Agensi</a> · <a rel="me" href="https://www.linkedin.com/company/runbooklab/">LinkedIn</a> · <a rel="me" href="https://bsky.app/profile/runbooklab.bsky.social">Bluesky</a> · <a rel="me" href="https://mastodon.social/@runbooklab">Mastodon</a> · <a rel="me" href="https://dev.to/runbooklab">dev.to</a></footer>
+</div></body></html>
