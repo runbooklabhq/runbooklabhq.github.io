@@ -3,6 +3,18 @@
 Replace 300+ EUR/month SaaS subscriptions with self-hosted Python FastAPI microservices and 1-click importable n8n workflows.
 
 ## 📦 Production-Ready Engines (Gumroad)
+### Entra SMS MFA Exit Kit: Complete (12 controls)
+> Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
+**[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/sms-mfa-exit-kit/SECOPS25)**
+
+---
+
+### Entra SMS MFA Exit Kit: Top 5 (free)
+> Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
+**[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/sms-mfa-exit-top5/SECOPS25)**
+
+---
+
 ### M365 Hardening Kit: Complete (58 controls)
 > Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
 **[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/m365-hardening-kit/SECOPS25)**
@@ -48,12 +60,6 @@ Replace 300+ EUR/month SaaS subscriptions with self-hosted Python FastAPI micros
 ### Automated SecOps SIEM & WAF Alert Triage Engine (n8n + Python FastAPI)
 > Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
 **[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/fauvaz/SECOPS25)**
-
----
-
-### B2B Lead Triage & AI Enrichment Engine (n8n + Python)
-> Filters 100+ free email providers, live-scrapes domains without paid APIs, scores ICP fit via GPT-4o-mini.
-**[⚡ Download Blueprint (19 EUR)](https://runbooklab.gumroad.com/l/qjimps/FLASH19)**
 
 ---
 
