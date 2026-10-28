@@ -3,6 +3,18 @@
 Replace 300+ EUR/month SaaS subscriptions with self-hosted Python FastAPI microservices and 1-click importable n8n workflows.
 
 ## 📦 Production-Ready Engines (Gumroad)
+### Exchange Online Protection Kit: Complete (20 controls)
+> Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
+**[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/exchange-online-protection-kit/SECOPS25)**
+
+---
+
+### Exchange Online Protection Kit: Top 5 (free)
+> Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
+**[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/exchange-online-protection-top5/SECOPS25)**
+
+---
+
 ### Entra Conditional Access Baseline Kit: Complete (20 controls)
 > Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
 **[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/entra-conditional-access-kit/SECOPS25)**
@@ -48,18 +60,6 @@ Replace 300+ EUR/month SaaS subscriptions with self-hosted Python FastAPI micros
 ### M365 Copilot Readiness Kit: Top 5 (free)
 > Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
 **[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/copilot-readiness-top5/SECOPS25)**
-
----
-
-### Entra SMS MFA Exit Kit: Complete (12 controls)
-> Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
-**[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/sms-mfa-exit-kit/SECOPS25)**
-
----
-
-### Entra SMS MFA Exit Kit: Top 5 (free)
-> Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
-**[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/sms-mfa-exit-top5/SECOPS25)**
 
 ---
 
