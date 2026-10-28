@@ -3,9 +3,21 @@
 Replace 300+ EUR/month SaaS subscriptions with self-hosted Python FastAPI microservices and 1-click importable n8n workflows.
 
 ## 📦 Production-Ready Engines (Gumroad)
+### Entra Conditional Access Baseline Kit: Complete (20 controls)
+> Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
+**[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/entra-conditional-access-kit/SECOPS25)**
+
+---
+
+### Entra Conditional Access Baseline Kit: Top 5 (free)
+> Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
+**[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/entra-conditional-access-top5/SECOPS25)**
+
+---
+
 ### Defender for Endpoint and ASR Kit: Complete (15 controls)
 > Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
-**[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/tbcvf/SECOPS25)**
+**[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/defender-asr-kit/SECOPS25)**
 
 ---
 
@@ -48,18 +60,6 @@ Replace 300+ EUR/month SaaS subscriptions with self-hosted Python FastAPI micros
 ### Entra SMS MFA Exit Kit: Top 5 (free)
 > Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
 **[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/sms-mfa-exit-top5/SECOPS25)**
-
----
-
-### M365 Hardening Kit: Complete (58 controls)
-> Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
-**[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/m365-hardening-kit/SECOPS25)**
-
----
-
-### M365 Hardening Kit: Emergency Top 10
-> Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
-**[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/m365-hardening-top10/SECOPS25)**
 
 ---
 
