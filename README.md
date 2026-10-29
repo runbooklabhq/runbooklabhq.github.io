@@ -3,6 +3,24 @@
 Replace 300+ EUR/month SaaS subscriptions with self-hosted Python FastAPI microservices and 1-click importable n8n workflows.
 
 ## 📦 Production-Ready Engines (Gumroad)
+### AI & Identity Pack (3 kits)
+> Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
+**[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/ai-identity-pack/SECOPS25)**
+
+---
+
+### Microsoft 365 Hardening Library (7 kits)
+> Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
+**[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/m365-hardening-library/SECOPS25)**
+
+---
+
+### Privileged Access and PIM Kit: Top 5 (free)
+> Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
+**[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/privileged-access-pim-top5/SECOPS25)**
+
+---
+
 ### Exchange Online Protection Kit: Complete (20 controls)
 > Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
 **[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/exchange-online-protection-kit/SECOPS25)**
@@ -42,24 +60,6 @@ Replace 300+ EUR/month SaaS subscriptions with self-hosted Python FastAPI micros
 ### M365 AI Agent Hardening Kit: Complete (20 controls)
 > Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
 **[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/ai-agent-hardening-kit/SECOPS25)**
-
----
-
-### M365 Copilot Readiness Kit: Complete (24 controls)
-> Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
-**[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/copilot-readiness-kit/SECOPS25)**
-
----
-
-### M365 AI Agent Hardening Kit: Top 5 (free)
-> Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
-**[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/ai-agent-hardening-top5/SECOPS25)**
-
----
-
-### M365 Copilot Readiness Kit: Top 5 (free)
-> Eliminate 80% of SOC alert fatigue. Ingests SIEM/WAF webhooks, scores SQLi/LFI payloads, and triggers instant WAF block actions.
-**[⚡ Download Blueprint (25 EUR)](https://runbooklab.gumroad.com/l/copilot-readiness-top5/SECOPS25)**
 
 ---
 
