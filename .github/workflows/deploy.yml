@@ -38,6 +38,7 @@ jobs:
         run: mkdocs build --strict -d ../_site
         env:
           RL_CF_BEACON: ${{ vars.RL_CF_BEACON }}
+          RL_POSTHOG_KEY: ${{ vars.RL_POSTHOG_KEY }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
