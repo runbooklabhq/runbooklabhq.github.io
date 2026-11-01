@@ -75,6 +75,7 @@ jobs:
     if: needs.build.outputs.has_payload == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    continue-on-error: true
     permissions: {}
     steps:
       - uses: actions/download-artifact@v4
@@ -83,10 +84,13 @@ jobs:
           name: indexnow-payload
       - name: Tell IndexNow which pages changed
         run: |
-          code=$(curl -sS --max-time 30 --retry 2 -o /dev/null -w '%{http_code}' -X POST \
+          # Bing endpoint; shared with all IndexNow engines. api.indexnow.org gave 403 (key not verified) on 2026-11-01.
+          [ -s indexnow-payload.json ] || { echo "::warning title=IndexNow::payload missing, nothing sent"; exit 0; }
+          code=$(curl -sS --max-time 30 --retry 2 --retry-max-time 60 -o indexnow-response.txt -w '%{http_code}' -X POST \
             -H 'Content-Type: application/json; charset=utf-8' \
-            --data @indexnow-payload.json https://api.indexnow.org/indexnow || echo "curl-failed")
+            --data-binary @indexnow-payload.json https://www.bing.com/indexnow) || true
           case "$code" in
             200|202) echo "IndexNow accepted the list (HTTP $code)";;
-            *) echo "::warning title=IndexNow::not accepted (HTTP $code); the pages will still be found by normal crawling";;
+            *) why=$(head -c 200 indexnow-response.txt 2>/dev/null | tr ':' ' ' | tr -cd '[:alnum:] ._,-') || true
+               echo "::warning title=IndexNow::not accepted (HTTP ${code:-none} ${why}); the pages will still be found by normal crawling";;
           esac
