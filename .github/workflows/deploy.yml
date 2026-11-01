@@ -20,6 +20,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      has_payload: ${{ steps.inow.outputs.has_payload }}
     steps:
       - uses: actions/checkout@v4
       - name: Unpack the site source
@@ -39,6 +41,22 @@ jobs:
         env:
           RL_CF_BEACON: ${{ vars.RL_CF_BEACON }}
           RL_POSTHOG_KEY: ${{ vars.RL_POSTHOG_KEY }}
+      # IndexNow (Bing and others): never allowed to block the deploy, hence continue-on-error everywhere.
+      - name: IndexNow, find new and changed pages (writes indexnow-manifest.json into the site)
+        id: inow
+        continue-on-error: true
+        working-directory: src
+        run: |
+          python indexnow.py ../_site ../indexnow-payload.json
+          if [ -f ../indexnow-payload.json ]; then echo "has_payload=true" >> "$GITHUB_OUTPUT"; else echo "has_payload=false" >> "$GITHUB_OUTPUT"; fi
+      - name: Keep the IndexNow list for after the deploy
+        if: steps.inow.outputs.has_payload == 'true'
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: indexnow-payload
+          path: indexnow-payload.json
+          retention-days: 1
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
@@ -51,3 +69,24 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+  indexnow:
+    # Runs only after the new site is live, so the engines fetch the new version; only when pages changed.
+    needs: [build, deploy]
+    if: needs.build.outputs.has_payload == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: indexnow-payload
+      - name: Tell IndexNow which pages changed
+        run: |
+          code=$(curl -sS --max-time 30 --retry 2 -o /dev/null -w '%{http_code}' -X POST \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            --data @indexnow-payload.json https://api.indexnow.org/indexnow || echo "curl-failed")
+          case "$code" in
+            200|202) echo "IndexNow accepted the list (HTTP $code)";;
+            *) echo "::warning title=IndexNow::not accepted (HTTP $code); the pages will still be found by normal crawling";;
+          esac
